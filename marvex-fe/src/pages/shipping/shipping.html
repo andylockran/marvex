@@ -14,8 +14,72 @@
 
 
 <ion-content padding>
-<button ion-button (click)="getInfo()">Get Info</button>
-<h2>Company Name: {{ company_na }}</h2>
-<p>Registered: {{ registered }}</p>
-<p>Nationality: {{ nationalit }}</p>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col col-6>
+        <h2>{{ company?.company_name }}
+          <span *ngIf="company?.alternative_name">
+            <br/><em>{{ company?.alternative_name }}</em>
+          </span>
+        </h2>
+      </ion-col>
+
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <ion-item>
+          <h5>Managers:</h5>
+          <p>
+            {{ company?.managers}}
+          </p>
+        </ion-item>
+        <ion-item>
+          <h5>Beneficial Owner</h5>
+          <p>
+            {{ company?.owner }}
+          </p>
+        </ion-item>
+        <ion-item>
+          <h5>Date founded <em> // ceased</em></h5>
+          <p>
+            {{ company?.date_founded }}<span *ngIf="company?.date_ceased">
+                <em> // {{ company?.date_ceased }}</em>
+              </span>
+          </p>
+          <p> {{ company?.cesseation_field }}</p>
+        </ion-item>
+        <ion-item>
+          <h5>
+            Registered Port:
+          </h5>
+          <p>
+            {{ company?.registered }}
+          </p>
+        </ion-item>
+        <ion-item>
+          <h5>Nationality:</h5>
+          <p>
+            {{ company?.nationality }}, {{ company?.country }}
+          </p>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item>
+          <h5>JLL Sighted</h5>
+          <p>{{ company?.jll_sighted }}</p>
+        </ion-item>
+        <ion-item>
+          <h5>Category</h5>
+          <p>{{ company?.category }}</p>
+        </ion-item>
+        <ion-item>
+            <shippingflag number="{{number}}"></shippingflag>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+
+  </ion-grid>
+
 </ion-content>

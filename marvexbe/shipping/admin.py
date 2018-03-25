@@ -21,8 +21,8 @@ class ShippingResource(resources.ModelResource):
 #    resource_class = ShippingResource
 
 class ShippingAdmin(admin.ModelAdmin):
-    list_display = ('fk_id', 'company_na', 'registered')
-    list_filter = ('date_found', 'date_cease')
+    list_display = ('fk_id', 'company_name', 'registered')
+    list_filter = ('date_founded', 'date_ceased')
 
 
 admin.site.register(Shipping, ShippingAdmin);

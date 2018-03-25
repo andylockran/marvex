@@ -8,22 +8,22 @@ from django.contrib import admin
 
 class Shipping(models.Model):
     fk_id      = models.IntegerField(db_column='id', primary_key=True)
-    company_na = models.CharField(db_column='COMPANY_NA', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    alternativ = models.CharField(db_column='ALTERNATIV', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    company_name = models.CharField(db_column='COMPANY_NA', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    alternative_name = models.CharField(db_column='ALTERNATIV', max_length=50, blank=True, null=True)  # Field name made lowercase.
     managers = models.CharField(db_column='MANAGERS', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    manager_na = models.CharField(db_column='MANAGER_NA', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    date_found = models.CharField(db_column='DATE_FOUND', max_length=15, blank=True, null=True)  # Field name made lowercase.
-    date_cease = models.CharField(db_column='DATE_CEASE', max_length=15, blank=True, null=True)  # Field name made lowercase.
+    manager_names = models.CharField(db_column='MANAGER_NA', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    date_founded = models.CharField(db_column='DATE_FOUND', max_length=15, blank=True, null=True)  # Field name made lowercase.
+    date_ceased = models.CharField(db_column='DATE_CEASE', max_length=15, blank=True, null=True)  # Field name made lowercase.
     cessation_field = models.CharField(db_column='CESSATION_', max_length=50, blank=True, null=True)  # Field name made lowercase. Field renamed because it ended with '_'.
-    funnel_des = models.CharField(db_column='FUNNEL_DES', max_length=150, blank=True, null=True)  # Field name made lowercase.
-    flag_descr = models.CharField(db_column='FLAG_DESCR', max_length=150, blank=True, null=True)  # Field name made lowercase.
-    hull_descr = models.CharField(db_column='HULL_DESCR', max_length=149, blank=True, null=True)  # Field name made lowercase.
+    funnel_description = models.CharField(db_column='FUNNEL_DES', max_length=150, blank=True, null=True)  # Field name made lowercase.
+    flag_description = models.CharField(db_column='FLAG_DESCR', max_length=150, blank=True, null=True)  # Field name made lowercase.
+    hull_description = models.CharField(db_column='HULL_DESCR', max_length=149, blank=True, null=True)  # Field name made lowercase.
     remarks = models.CharField(db_column='REMARKS', max_length=250, blank=True, null=True)  # Field name made lowercase.
     provenance = models.CharField(db_column='PROVENANCE', max_length=250, blank=True, null=True)  # Field name made lowercase.
     registered = models.CharField(db_column='REGISTERED', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    nationalit = models.CharField(db_column='NATIONALIT', max_length=3, blank=True, null=True)  # Field name made lowercase.
-    jll_sighti = models.CharField(db_column='JLL_SIGHTI', max_length=1, blank=True, null=True)  # Field name made lowercase.
-    registrati = models.IntegerField(db_column='REGISTRATI', blank=True, null=True)  # Field name made lowercase.
+    nationality = models.CharField(db_column='NATIONALIT', max_length=3, blank=True, null=True)  # Field name made lowercase.
+    jll_sighted = models.CharField(db_column='JLL_SIGHTI', max_length=1, blank=True, null=True)  # Field name made lowercase.
+    registration = models.IntegerField(db_column='REGISTRATI', blank=True, null=True)  # Field name made lowercase.
     flagpc9 = models.IntegerField(db_column='FLAGPC9', blank=True, null=True)  # Field name made lowercase.
     funnelpc9 = models.IntegerField(db_column='FUNNELPC9', blank=True, null=True)  # Field name made lowercase.
     flag_type = models.CharField(db_column='FLAG_TYPE', max_length=1, blank=True, null=True)  # Field name made lowercase.

@@ -9,7 +9,11 @@ import { ShippingProvider } from '../../providers/shipping/shipping';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+  name: 'ShippingPage',
+  segment: 'shipping/:number'
+}
+)
 @Component({
   selector: 'page-shipping',
   templateUrl: 'shipping.html',
@@ -17,9 +21,8 @@ import { ShippingProvider } from '../../providers/shipping/shipping';
 })
 export class ShippingPage {
 
-  fk_id: number;
-  company_na: string;
-  registered: string;
+  company: any;
+  number: number;
   loading: any;
 
   constructor(
@@ -32,21 +35,20 @@ export class ShippingPage {
       content: '<ion-spinner ></ion-spinner>',
     });
     this.loading.present();
+    this.number = this.navParams.get('number');
+    console.log(this.number);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ShippingPage');
-    this.getData(1);
+    this.getData();
   }
 
-  getData(number) {
-    this.shippingProvider.getData(number).subscribe(
+  getData() {
+    this.shippingProvider.getData(this.number).subscribe(
       result => {
         console.log(result),
-        this.company_na = result.company_na;
-        this.fk_id = result.fk_id;
-        this.registered = result.registered;
-        this.nationalit = result.nationalit;
+        this.company = result;
       },
       err => {
         console.log("Error: "+err);
