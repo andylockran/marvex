@@ -11,4 +11,3 @@ class ShippingViewSet(viewsets.ModelViewSet):
     serializer_class = ShippingSerializer
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ('registered', 'jll_sighted', 'nationality')
-
