@@ -1,0 +1,8 @@
+language: python
+python:
+  - "2.7"
+  - "3.6"
+language: python
+script: travis_wait 30 pylint --ignore marvexbe/shipping/migrations marvexbe/shipping/
+install:
+  - pip install -r requirements.txt
