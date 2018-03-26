@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'shipping',
     'import_export',
     'rest_framework',
+    'django_filters',
+    'rest_framework_swagger',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -114,5 +116,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 100,
+    'PAGE_SIZE': 20,
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
 }

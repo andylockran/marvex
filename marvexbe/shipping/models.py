@@ -6,23 +6,30 @@ from django.contrib import admin
 
 # Create your models here.
 
+class Country (models.Model):
+    original_code = models.CharField(max_length=10, blank=True, null=True, help_text="The original code used in the Approach database.")
+    iso_code3 = models.CharField(max_length=3, blank=True, null=True, help_text="The official 3 digit ISO code.")
+    iso_code2 = models.CharField(max_length=2, blank=True, null=True, help_text="The official 2 digit ISO code.")
+    long_name = models.CharField(max_length=50, blank=True, null=True, help_text="The official name.")
+
 class Shipping(models.Model):
-    fk_id      = models.IntegerField(db_column='id', primary_key=True)
-    company_name = models.CharField(db_column='COMPANY_NA', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    alternative_name = models.CharField(db_column='ALTERNATIV', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    fk_id      = models.IntegerField(db_column='id', primary_key=True, help_text="The unique identifier for the record, legacy from the original approach database.")
+    company_name = models.CharField(db_column='COMPANY_NA', max_length=50, blank=True, null=True, help_text="The company's primary name.")  # Field name made lowercase.
+    alternative_name = models.CharField(db_column='ALTERNATIV', max_length=50, blank=True, null=True, help_text="Any alternative names for the company.")  # Field name made lowercase.
     managers = models.CharField(db_column='MANAGERS', max_length=50, blank=True, null=True)  # Field name made lowercase.
     manager_names = models.CharField(db_column='MANAGER_NA', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    date_founded = models.CharField(db_column='DATE_FOUND', max_length=15, blank=True, null=True)  # Field name made lowercase.
-    date_ceased = models.CharField(db_column='DATE_CEASE', max_length=15, blank=True, null=True)  # Field name made lowercase.
+    date_founded = models.CharField(db_column='DATE_FOUND', max_length=15, blank=True, null=True, help_text="The year the company was founded (not always a single year).")  # Field name made lowercase.
+    date_ceased = models.CharField(db_column='DATE_CEASE', max_length=15, blank=True, null=True, help_text="The year the company ceased")  # Field name made lowercase.
     cessation_field = models.CharField(db_column='CESSATION_', max_length=50, blank=True, null=True)  # Field name made lowercase. Field renamed because it ended with '_'.
     funnel_description = models.CharField(db_column='FUNNEL_DES', max_length=150, blank=True, null=True)  # Field name made lowercase.
     flag_description = models.CharField(db_column='FLAG_DESCR', max_length=150, blank=True, null=True)  # Field name made lowercase.
     hull_description = models.CharField(db_column='HULL_DESCR', max_length=149, blank=True, null=True)  # Field name made lowercase.
     remarks = models.CharField(db_column='REMARKS', max_length=250, blank=True, null=True)  # Field name made lowercase.
     provenance = models.CharField(db_column='PROVENANCE', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    registered = models.CharField(db_column='REGISTERED', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    nationality = models.CharField(db_column='NATIONALIT', max_length=3, blank=True, null=True)  # Field name made lowercase.
-    jll_sighted = models.CharField(db_column='JLL_SIGHTI', max_length=1, blank=True, null=True)  # Field name made lowercase.
+    registered = models.CharField(db_column='REGISTERED', max_length=25, blank=True, null=True, help_text="The city of registration.")  # Field name made lowercase.
+    nationality = models.CharField(db_column='NATIONALIT', max_length=3, blank=True, null=True, help_text="The registered nationality of the ship.")  # Field name made lowercase.
+    country = models.ForeignKey(Country, blank=True, null=True)
+    jll_sighted = models.CharField(db_column='JLL_SIGHTI', max_length=1, blank=True, null=True, help_text="Y/N field for whether this was spotted by Louis Loughran.")  # Field name made lowercase.
     registration = models.IntegerField(db_column='REGISTRATI', blank=True, null=True)  # Field name made lowercase.
     flagpc9 = models.IntegerField(db_column='FLAGPC9', blank=True, null=True)  # Field name made lowercase.
     funnelpc9 = models.IntegerField(db_column='FUNNELPC9', blank=True, null=True)  # Field name made lowercase.
@@ -75,8 +82,9 @@ class Shipping(models.Model):
 
     class Meta:
         managed = False
+        managed = True
         db_table = 'SHIPPING'
         ordering = ['fk_id']        
     
     def __unicode__(self):
-            return str(self.company_na)
+            return str(self.company_name)
