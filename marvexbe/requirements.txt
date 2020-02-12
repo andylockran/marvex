@@ -13,7 +13,7 @@ coreschema==0.0.4
 csvkit==1.0.3
 dbfread==2.0.7
 diff-match-patch==20121119
-Django==1.11.11
+Django==1.11.28
 django-filter==1.1.0
 django-filters==0.2.1
 django-import-export==1.0.0
