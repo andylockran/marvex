@@ -5,7 +5,7 @@ agate-sql==0.5.3
 astroid==1.6.2
 Babel==2.5.3
 backports.functools-lru-cache==1.5
-certifi==2018.1.18
+certifi==2022.12.7
 chardet==3.0.4
 configparser==3.5.0
 coreapi==2.3.3
